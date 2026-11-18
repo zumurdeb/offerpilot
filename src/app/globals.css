@@ -1,0 +1,220 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* shadcn primitive slots, mapped onto OfferPilot tokens */
+  --color-background: var(--surface-page);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--surface-card);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--surface-raised);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--accent-primary);
+  --color-primary-foreground: var(--text-on-accent);
+  --color-secondary: var(--surface-sunken);
+  --color-secondary-foreground: var(--text-primary);
+  --color-muted: var(--surface-sunken);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--surface-sunken);
+  --color-accent-foreground: var(--text-primary);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border-default);
+  --color-input: var(--border-default);
+  --color-ring: var(--accent-primary);
+
+  /* OfferPilot brand + semantic tokens, exposed directly as utilities
+     (bg-climb, text-descent, border-accent-border, etc.) */
+  --color-surface-page: var(--surface-page);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-card: var(--surface-card);
+  --color-surface-raised: var(--surface-raised);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-accent: var(--text-on-accent);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+  --color-beacon: var(--beacon);
+  --color-beacon-soft: var(--beacon-soft);
+  --color-climb: var(--climb);
+  --color-climb-soft: var(--climb-soft);
+  --color-descent: var(--descent);
+  --color-descent-soft: var(--descent-soft);
+  --color-turbulence: var(--turbulence);
+  --color-turbulence-soft: var(--turbulence-soft);
+  --color-destructive: var(--destructive);
+
+  /* Sidebar is a constant-dark surface in both themes — see DESIGN_SYSTEM.md */
+  --color-sidebar: var(--sidebar-surface);
+  --color-sidebar-foreground: var(--sidebar-text);
+  --color-sidebar-muted: var(--sidebar-text-muted);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-active-bg);
+  --color-sidebar-accent-foreground: var(--sidebar-active-text);
+  --color-sidebar-ring: var(--accent-primary);
+
+  --color-chart-1: var(--accent-primary);
+  --color-chart-2: var(--climb);
+  --color-chart-3: var(--descent);
+  --color-chart-4: var(--turbulence);
+  --color-chart-5: var(--beacon);
+
+  --font-sans: var(--font-plex-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-plex-sans), sans-serif;
+  --font-mono: var(--font-plex-mono), "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 20px;
+  --radius-3xl: 20px;
+  --radius-4xl: 20px;
+
+  --shadow-xs: var(--shadow-xs-value);
+  --shadow-sm: var(--shadow-sm-value);
+  --shadow-md: var(--shadow-md-value);
+  --shadow-lg: var(--shadow-lg-value);
+}
+
+:root {
+  /* Surfaces */
+  --surface-page: #ffffff;
+  --surface-sunken: #f7f8fb;
+  --surface-card: #ffffff;
+  --surface-raised: #ffffff;
+
+  /* Borders */
+  --border-subtle: #eef1f6;
+  --border-default: #e1e5ed;
+  --border-strong: #c7cddb;
+
+  /* Text */
+  --text-primary: #0e1526;
+  --text-secondary: #333d54;
+  --text-muted: #5b6478;
+  --text-on-accent: #ffffff;
+  --text-on-dark: #f3f5fa;
+
+  /* Brand */
+  --accent-primary: #2451e8;
+  --accent-primary-hover: #1c3fc2;
+  --accent-soft: #eef2fe;
+  --accent-border: #c4d1fb;
+  --beacon: #c2790c;
+  --beacon-soft: #fcf0dc;
+
+  /* Profitability semantics */
+  --climb: #157a46;
+  --climb-soft: #e8f8ef;
+  --descent: #c23039;
+  --descent-soft: #fcebec;
+  --turbulence: #a15e09;
+  --turbulence-soft: #fcf0dc;
+  --destructive: #c23039;
+
+  /* Sidebar — always the darkest surface in the shell, constant across themes */
+  --sidebar-surface: #0d1324;
+  --sidebar-border: #1c2438;
+  --sidebar-text: #f3f5fa;
+  --sidebar-text-muted: #8690a8;
+  --sidebar-active-bg: #182352;
+  --sidebar-active-text: #9db0f7;
+
+  /* Shadows */
+  --shadow-xs-value: 0 1px 2px rgba(14, 21, 38, 0.04);
+  --shadow-sm-value: 0 1px 2px rgba(14, 21, 38, 0.06), 0 1px 1px rgba(14, 21, 38, 0.04);
+  --shadow-md-value: 0 8px 20px rgba(14, 21, 38, 0.1), 0 2px 4px rgba(14, 21, 38, 0.04);
+  --shadow-lg-value: 0 20px 40px rgba(14, 21, 38, 0.16), 0 4px 8px rgba(14, 21, 38, 0.04);
+  --shadow-focus-value: 0 0 0 3px rgba(36, 81, 232, 0.35);
+
+  --radius: 10px;
+}
+
+.dark {
+  --surface-page: #0a0f1c;
+  --surface-sunken: #0e1526;
+  --surface-card: #121829;
+  --surface-raised: #1b2334;
+
+  --border-subtle: #1f2838;
+  --border-default: #2a3450;
+  --border-strong: #3b4666;
+
+  --text-primary: #f3f5fa;
+  --text-secondary: #c3cad9;
+  --text-muted: #8690a8;
+  --text-on-accent: #0a0f1c;
+  --text-on-dark: #f3f5fa;
+
+  --accent-primary: #6b86f2;
+  --accent-primary-hover: #8aa0f5;
+  --accent-soft: #1a2550;
+  --accent-border: #3c4d94;
+  --beacon: #e8a33d;
+  --beacon-soft: #3a2a0c;
+
+  --climb: #3fcb84;
+  --climb-soft: #123522;
+  --descent: #f0707a;
+  --descent-soft: #3a1519;
+  --turbulence: #e8a838;
+  --turbulence-soft: #3a2a0c;
+  --destructive: #f0707a;
+
+  --sidebar-surface: #0a0f1f;
+  --sidebar-border: #1c2438;
+  --sidebar-text: #f3f5fa;
+  --sidebar-text-muted: #8690a8;
+  --sidebar-active-bg: #182352;
+  --sidebar-active-text: #9db0f7;
+
+  --shadow-xs-value: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm-value: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
+  --shadow-md-value: 0 8px 20px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-lg-value: 0 20px 40px rgba(0, 0, 0, 0.55), 0 4px 8px rgba(0, 0, 0, 0.35);
+  --shadow-focus-value: 0 0 0 3px rgba(107, 134, 242, 0.45);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .shadow-xs {
+    box-shadow: var(--shadow-xs-value);
+  }
+  .shadow-sm {
+    box-shadow: var(--shadow-sm-value);
+  }
+  .shadow-md {
+    box-shadow: var(--shadow-md-value);
+  }
+  .shadow-lg {
+    box-shadow: var(--shadow-lg-value);
+  }
+  .shadow-focus {
+    box-shadow: var(--shadow-focus-value);
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
